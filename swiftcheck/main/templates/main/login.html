@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login - SwiftCheck</title>
+
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<h1>Login</h1>
+		
+		<div class="login-container">
+			<div class="login-container-left">
+				<div class="login-img-container">
+					<img src="{% static 'img/vault.png' %}" alt="My image">
+				</div>
+			</div>
+
+			<div class="login-container-right">
+				<h1>Login</h1>
+				<p>Login to your account</p>
+				<form action="">
+					<input type="text" placeholder="Username">
+					<input type="password" placeholder="Password">
+					<button type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

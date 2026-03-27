@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCheck | Your IT Course Hub</title>
+    <meta name="description" content="Swiftly check and discover the latest IT courses to level up your skills.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="{% url 'login' %}" class="btn btn-outline">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="animate">Level Up Your <span class="gradient-text">IT Career</span> Swiftly</h1>
+            <p class="animate" style="animation-delay: 0.1s;">The fastest way for students to discover and track trending IT courses. Stay ahead of the curve with real-time updates on latest curriculum.</p>
+            <div class="hero-btns animate" style="animation-delay: 0.2s;">
+                <a href="#" class="btn btn-primary">Browse Courses</a>
+                <a href="#" class="btn btn-outline">How it Works</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Categories -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore <span class="gradient-text">Categories</span></h2>
+                <p>Pick a path and start your journey today</p>
+            </div>
+            
+            <div class="grid">
+                <!-- Card 1: Web Dev -->
+                <div class="card animate" style="animation-delay: 0.3s;">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Master modern frameworks like React, Next.js, and Django. Build scalable web applications from scratch.</p>
+                </div>
+
+                <!-- Card 2: AI/ML -->
+                <div class="card animate" style="animation-delay: 0.4s;">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Dive into Neural Networks, Natural Language Processing, and Machine Learning algorithms using Python.</p>
+                </div>
+
+                <!-- Card 3: Cloud -->
+                <div class="card animate" style="animation-delay: 0.5s;">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a3.5 3.5 0 0 0 .5-6.95A7 7 0 0 0 4.5 9a10 10 0 0 0 13 10z"></path></svg>
+                    </div>
+                    <h3>Cloud Computing</h3>
+                    <p>Learn to deploy and manage applications on AWS, Azure, and GCP. Master DevOps and infrastructure as code.</p>
+                </div>
+
+                <!-- Card 4: Security -->
+                <div class="card animate" style="animation-delay: 0.6s;">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect digital assets and networks. Learn ethical hacking, encryption, and threat analysis techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+                <p class="copyright">&copy; 2026 SwiftCheck. Empowering the next generation of IT professionals.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
