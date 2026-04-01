@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<!-- Navigation -->
+		<nav>
+			<div class="container">
+				<a href="{% url 'home' %}" class="logo"
+					>Swift<span>Check</span></a
+				>
+				<ul class="nav-links">
+					<li><a href="#">Courses</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Resources</a></li>
+					<li>
+						<a href="{% url 'login' %}" class="btn btn-outline"
+							>Sign In</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+        <section class="section-padding">
+
+            <div class="courses">
+                {% for course in courses %}
+                <div class="course-card">
+                    <h1>{{ course.name }}</h1>
+                    <p>{{ course.description }}</p>
+                    <p>{{ course.price }}</p>
+                    <p>{{ course.teacher.username }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+	</body>
+</html>
