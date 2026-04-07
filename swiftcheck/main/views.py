@@ -16,3 +16,4 @@ def course(request):
         'courses': courses
     }
     return render(request, 'main/course.html', context)
+
