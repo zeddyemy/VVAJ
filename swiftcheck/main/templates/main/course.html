@@ -5,7 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2" />
 		<title>Document</title>
 	</head>
 
@@ -30,17 +30,18 @@
 		</nav>
 
         <section class="section-padding">
-
-            <div class="courses">
+			<div class="container">
+				<div class="courses">
                 {% for course in courses %}
                 <div class="course-card">
                     <h1>{{ course.name }}</h1>
-                    <p>{{ course.description }}</p>
-                    <p>{{ course.price }}</p>
-                    <p>{{ course.teacher.username }}</p>
+                    <p class="desc">{{ course.description }}</p>
+                    <p class="Price">₦{{ course.price }}</p>
+                    <p class="teacher">By {{ course.teacher.username }}</p>
                 </div>
                 {% endfor %}
             </div>
+			</div>
         </section>
 	</body>
 </html>
