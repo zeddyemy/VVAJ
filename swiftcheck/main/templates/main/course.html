@@ -1,85 +1,75 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-		<title>Document</title>
-	</head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Document</title>
+  </head>
 
-	<body>
-		<!-- Navigation -->
-		<nav>
-			<div class="container">
-				<a href="{% url 'home' %}" class="logo"
-					>Swift<span>Check</span></a
-				>
-				<ul class="nav-links">
-					<li><a href="./course.html">Courses</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Resources</a></li>
-					<li>
-						<a href="{% url 'login' %}" class="btn btn-outline"
-							>Sign In</a
-						>
-					</li>
-				</ul>
-			</div>
-		</nav>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
+        <ul class="nav-links">
+          <li><a href="{% url 'courses' %}">Courses</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Resources</a></li>
+          <li>
+            <a href="{% url 'login' %}" class="btn btn-outline">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-		
+    <section class="section-padding">
+      <div class="container">
+        <h1 class="Omo">Our <span>Expert</span> Courses</h1>
+        <p class="container p">
+          We offer a range of industry-relevant
+          <span> courses designed to equip learners with</span> practical skills
+          in modern web development , From
+          <span>frontend technologies to backend frameworks</span>, our programs
+          are structured to help you build real-world projects and
+          <span>become job-ready</span>.
+        </p>
+      </div>
 
-        <section class="section-padding">
-
-			<div class="container">
-				<h1 class="Omo">Our <span>Expert</span> Courses</h1>
-				<p class="container p">We offer a range of industry-relevant  <span> courses designed to equip learners with</span> practical skills in modern web development , From  <span>frontend technologies to backend frameworks</span>, our programs are structured to help you build real-world projects and <span>become job-ready</span>.</p>
-			</div>
-
-			<div class="Val">
+      <!-- <div class="Val">
 				<h1> OUR <span>FRONTEND</span> <span> DEVELOPMENT</span> COURSES</h1>
 				<p>Explore our comprehensive <span> frontend development courses designed </span> to take your skills to the next level.</p>
-			</div>
-              
+			</div> -->
 
-			<div class="courses">
-	
-                {% for course in courses %}
-                <div class="course-card">
-                    <h1>{{ course.name }}</h1>
-                    <p>{{ course.description }}</p>
-                    <p> PRICE : {{ course.price }}</p>
-                    <p>TUTOR : {{ course.teacher.username }}</p>
-                </div>
-                {% endfor %}
+      <div class="courses">
+        {% for course in courses %}
+        <div class="course-card">
+          <h1>{{ course.name }}</h1>
+          <p>{{ course.description }}</p>
+          <p>PRICE : {{ course.price }}</p>
+          <p>TUTOR : {{ course.teacher.username }}</p>
+        </div>
+        {% endfor %}
+      </div>
 
-			</div>
-
-			<div class="Val2">
+      <!-- <div class="Val2">
 				<h1> OUR  <span> BACKEND DEVELOPMENT</span> COURSES</h1>
 				<p>Learn how to build powerful <span>server-side applications, manage databases, and create secure </span> , scalable systems that power modern web applications.</p>
 			</div>
 
 			<div class="courses2">
 	
-                {% for course in courses %}
+                {% for course in backend_courses %}
                 <div class="course-card2">
-                    <h1>{{ course.name2 }}</h1>
-                    <p>{{ course.description2 }}</p>
-                    <p>  {{ course.price2 }}</p>
-                    <p> {{ course.teacher.username2 }}</p>
+                    <h1>{{ course.name }}</h1>
+                    <p>{{ course.description }}</p>
+                    <p>  {{ course.price }}</p>
+                    <p> {{ course.teacher.username }}</p>
                 </div>
                 {% endfor %}
-
-
-
-
-
-
-        </section>
-
-		
-	</body>
+			</div> -->
+    </section>
+  </body>
 </html>

@@ -9,6 +9,7 @@ class User(models.Model):
     class Courses(models.TextChoices):
         FRONTEND = 'FRONTEND', 'Frontend Development'
         BACKEND = 'BACKEND', 'Backend Development'
+        FULLSTACK = 'FULLSTACK', 'Full Stack Development'
 
 
 class Course(models.Model):
