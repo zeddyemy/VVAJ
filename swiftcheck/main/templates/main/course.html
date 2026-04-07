@@ -38,13 +38,13 @@
         </p>
       </div>
 
-      <!-- <div class="Val">
+      <div class="Val">
 				<h1> OUR <span>FRONTEND</span> <span> DEVELOPMENT</span> COURSES</h1>
 				<p>Explore our comprehensive <span> frontend development courses designed </span> to take your skills to the next level.</p>
-			</div> -->
-
+			</div>
+<!--  -->
       <div class="courses">
-        {% for course in courses %}
+        {% for course in frontend_courses %}
         <div class="course-card">
           <h1>{{ course.name }}</h1>
           <p>{{ course.description }}</p>
@@ -54,7 +54,7 @@
         {% endfor %}
       </div>
 
-      <!-- <div class="Val2">
+      <div class="Val2">
 				<h1> OUR  <span> BACKEND DEVELOPMENT</span> COURSES</h1>
 				<p>Learn how to build powerful <span>server-side applications, manage databases, and create secure </span> , scalable systems that power modern web applications.</p>
 			</div>
@@ -69,7 +69,7 @@
                     <p> {{ course.teacher.username }}</p>
                 </div>
                 {% endfor %}
-			</div> -->
+			</div>
     </section>
   </body>
 </html>
