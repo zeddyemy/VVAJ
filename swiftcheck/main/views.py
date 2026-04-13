@@ -6,6 +6,13 @@ def home(request):
     return render(request, 'main/home.html')
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
     return render(request, 'main/login.html')
 
 def course(request):
@@ -22,3 +29,9 @@ def course(request):
     }
     return render(request, 'main/course.html', context)
 
+def course_detail(request, id):
+    course = Course.objects.get(id=id)
+    context = {
+        'course': course,
+    }
+    return render(request, 'main/course_detail.html', context)
