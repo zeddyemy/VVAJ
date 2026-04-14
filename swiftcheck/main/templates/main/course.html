@@ -1,30 +1,9 @@
+{% extends "main/base.html" %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>Document</title>
-  </head>
+{% block title %}Courses{% endblock %}
 
-  <body>
-    <!-- Navigation -->
-    <nav>
-      <div class="container">
-        <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
-        <ul class="nav-links">
-          <li><a href="{% url 'courses' %}">Courses</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Resources</a></li>
-          <li>
-            <a href="{% url 'login' %}" class="btn btn-outline">Sign In</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+{% block content %}
     <section class="section-padding">
       <div class="container">
         <h1 class="Omo">Our <span>Expert</span> Courses</h1>
@@ -50,6 +29,8 @@
           <p>{{ course.description }}</p>
           <p>PRICE : {{ course.price }}</p>
           <p>TUTOR : {{ course.teacher.username }}</p>
+
+          <a href="{% url 'course_detail' course.id %}" class="btn btn-outline">View Details</a>
         </div>
         {% endfor %}
       </div>
@@ -71,5 +52,4 @@
                 {% endfor %}
 			</div>
     </section>
-  </body>
-</html>
+{% endblock %}

@@ -395,165 +395,127 @@ footer {
     transform: translateY(-2px);
 }
 
-.section-padding {
-    
+/* --- Course Components --- */
 
-    
-}   
-
-.courses{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 0;
-   padding: 25px;
-}
-
-
-
-.course-card {
-    height: 50vh;
-    width: 90%;
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-    margin-bottom: 60px;
-    
-}
-
-.course-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 30px -10px var(--primary-glow);
-}
-
-.course-card h1 {
-    margin-bottom: 1rem;
-    color: var(--primary);
-}
-
-.course-card p {
-   
-    color: #ffffff;
-    font-size: 0.95rem;
-    margin-top: 10px;
-}
-
-
-.section-title h2 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: var(--primary);
-}
-
-.Omo{
+.course-hero {
+    padding: calc(var(--nav-height) + 4rem) 0 4rem;
     text-align: center;
-    margin-bottom: 50px;
-    font-size: 3rem;
+    background: radial-gradient(circle at top, var(--primary-glow) 0%, transparent 70%);
 }
 
-.Omo span{
-    color: var(--primary);
+.course-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
 }
 
-.container p{
-    color: #ffffff;
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    font-weight: bolder;
+.course-hero p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.container p span{
-    color: var(--primary);
+.category-title {
+    margin: 4rem 0 2rem;
+    font-size: 2rem;
+    position: relative;
+    padding-left: 1.5rem;
 }
 
-
-
-.Val h1{
-    margin-left: 40px;
-    padding-top: 80px;
-
-    
+.category-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 2px;
 }
 
-.Val h1 span{
-    color: var(--primary);
-}
-
-.Val p{
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-left: 40px;
-    padding: 20PX;
-}
-
-.Val span{
-    color: var(--primary);
-}
-
-.Val2 h1{
-    margin-left: 40px;
-    padding-top: 5px;
-
-    
-}
-
-.Val2 h1 span{
-    color: var(--primary);
-}
-
-.Val2 p{
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-left: 40px;
-    padding: 20PX;
-}
-
-.Val2 span{
-    color: var(--primary);
-}
-
-
-
-.courses2{
+.course-grid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 0;
-   padding: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
+/* Card overrides/extensions */
+.course-card {
+    height: auto; /* Allow content to dictate height */
+    display: flex;
+    flex-direction: column;
+}
 
+.course-card-content {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
 
 .course-card2 {
     height: 10vh;
     width: 90%;
     background: var(--card-bg);
-    padding: 20px;
-    border-radius: 15px;
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-    margin-bottom: 60px;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.course-card2:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
+.curriculum-item span {
+    color: var(--text-muted);
+}
+
+.sidebar {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+}
+
+.enroll-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--primary);
     box-shadow: 0 10px 30px -10px var(--primary-glow);
 }
 
-.course-card2 h1 {
-    margin-bottom: 1rem;
-    color: var(--primary);
+.enroll-card .price {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1.5rem;
 }
 
-.course-card2 p {
-   
-    color: #ffffff;
+.enroll-card .btn {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.enroll-card ul li {
     font-size: 0.95rem;
-    margin-top: 10px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.enroll-card ul li svg {
+    color: var(--accent);
+}
+
+/* Responsiveness for Detail Page */
+@media (max-width: 992px) {
+    .course-detail-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: static;
+        order: -1;
+    }
 }
 
