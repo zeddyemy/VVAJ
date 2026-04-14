@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SwiftCheck | {% block title %}{% endblock %}</title>
+
+        <meta name="description" content="Swiftly check and discover the latest IT courses to level up your skills.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<!-- Navigation -->
+		<nav>
+			<div class="container">
+				<a href="{% url 'home' %}" class="logo"
+					>Swift<span>Check</span></a
+				>
+				<ul class="nav-links">
+					<li><a href="{% url 'courses' %}">Courses</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Resources</a></li>
+					<li>
+						<a href="{% url 'login' %}" class="btn btn-outline"
+							>Sign In</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		{% block content %} {% endblock %}
+
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<div class="footer-content">
+					<a href="{% url 'home' %}" class="logo"
+						>Swift<span>Check</span></a
+					>
+					<ul class="footer-links">
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Terms of Service</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+					<p class="copyright">
+						&copy; 2026 SwiftCheck. Empowering the next generation
+						of IT professionals.
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Simple intersection observer for animations
+			const observerOptions = {
+				threshold: 0.1,
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+					}
+				});
+			}, observerOptions);
+
+			document
+				.querySelectorAll(".animate")
+				.forEach((el) => observer.observe(el));
+		</script>
+	</body>
+</html>
