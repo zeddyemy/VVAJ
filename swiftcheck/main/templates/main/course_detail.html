@@ -1,123 +1,153 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ course.name }} {% endblock %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ course.name }} | SwiftCheck</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
-            <ul class="nav-links">
-                <li><a href="{% url 'courses' %}">Courses</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Resources</a></li>
-                <li><a href="{% url 'login' %}" class="btn btn-outline">Sign In</a></li>
-            </ul>
-        </div>
-    </nav>
 
+
+
+    {% block content %}
     <!-- Header -->
     <header class="course-hero">
-        <div class="container">
-            <span class="badge animate">{{ course.category|title }}</span>
-            <h1 class="animate" style="animation-delay: 0.1s;">{{ course.name }}</h1>
-            <p class="animate" style="animation-delay: 0.2s;">Master the essentials and advanced concepts of {{ course.category|lower }} with this comprehensive program.</p>
-        </div>
+      <div class="container">
+        <span class="badge animate">{{ course.category|title }}</span>
+        <h1 class="animate" style="animation-delay: 0.1s">{{ course.name }}</h1>
+        <p class="animate" style="animation-delay: 0.2s">
+          Master the essentials and advanced concepts of {{
+          course.category|lower }} with this comprehensive program.
+        </p>
+      </div>
     </header>
 
     <main class="container section-padding">
-        <div class="course-detail-layout">
-            <!-- Left Column: Details -->
-            <div class="course-info animate" style="animation-delay: 0.3s;">
-                <h2>Course <span class="gradient-text">Overview</span></h2>
-                <p>{{ course.description }}</p>
+      <div class="course-detail-layout">
+        <!-- Left Column: Details -->
+        <div class="course-info animate" style="animation-delay: 0.3s">
+          <h2>Course <span class="gradient-text">Overview</span></h2>
+          <p>{{ course.description }}</p>
 
-                <h2 style="margin-top: 3rem;">What you'll <span class="gradient-text">Learn</span></h2>
-                <div class="curriculum">
-                    <div class="curriculum-item">
-                        <div>
-                            <strong>01. Introduction to the Ecosystem</strong>
-                            <p style="font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0;">Foundational concepts and setup.</p>
-                        </div>
-                        <span>25:00</span>
-                    </div>
-                    <div class="curriculum-item">
-                        <div>
-                            <strong>02. Core Architecture & Design</strong>
-                            <p style="font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0;">Deep dive into structural components.</p>
-                        </div>
-                        <span>45:00</span>
-                    </div>
-                    <div class="curriculum-item">
-                        <div>
-                            <strong>03. Advanced Implementation</strong>
-                            <p style="font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0;">Building complex features from scratch.</p>
-                        </div>
-                        <span>1:15:00</span>
-                    </div>
-                </div>
+          <h2 style="margin-top: 3rem">
+            What you'll <span class="gradient-text">Learn</span>
+          </h2>
+          <div class="curriculum">
+            <div class="curriculum-item">
+              <div>
+                <strong>01. Introduction to the Ecosystem</strong>
+                <p
+                  style="
+                    font-size: 0.9rem;
+                    margin-top: 0.25rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Foundational concepts and setup.
+                </p>
+              </div>
+              <span>25:00</span>
             </div>
-
-            <!-- Right Column: Sidebar -->
-            <aside class="sidebar animate" style="animation-delay: 0.4s;">
-                <div class="enroll-card">
-                    <span class="price">${{ course.price }}</span>
-                    <a href="#" class="btn btn-primary">Enroll Now</a>
-                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted);">Money-back guarantee within 30 days</p>
-                    
-                    <ul style="margin-top: 2rem;">
-                        <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            <span><strong>Tutor:</strong> {{ course.teacher.username }}</span>
-                        </li>
-                        <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                            <span><strong>Duration:</strong> 12 Hours</span>
-                        </li>
-                        <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            <span><strong>Level:</strong> Intermediate</span>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
+            <div class="curriculum-item">
+              <div>
+                <strong>02. Core Architecture & Design</strong>
+                <p
+                  style="
+                    font-size: 0.9rem;
+                    margin-top: 0.25rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Deep dive into structural components.
+                </p>
+              </div>
+              <span>45:00</span>
+            </div>
+            <div class="curriculum-item">
+              <div>
+                <strong>03. Advanced Implementation</strong>
+                <p
+                  style="
+                    font-size: 0.9rem;
+                    margin-top: 0.25rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Building complex features from scratch.
+                </p>
+              </div>
+              <span>1:15:00</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Right Column: Sidebar -->
+        <aside class="sidebar animate" style="animation-delay: 0.4s">
+          <div class="enroll-card">
+            <span class="price">${{ course.price }}</span>
+            <a href="#" class="btn btn-primary">Enroll Now</a>
+            <p
+              style="
+                text-align: center;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+              "
+            >
+              Money-back guarantee within 30 days
+            </p>
+
+            <ul style="margin-top: 2rem">
+              <li>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span
+                  ><strong>Tutor:</strong> {{ course.teacher.username }}</span
+                >
+              </li>
+              <li>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span><strong>Duration:</strong> 12 Hours</span>
+              </li>
+              <li>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span><strong>Level:</strong> Intermediate</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="{% url 'home' %}" class="logo">Swift<span>Check</span></a>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-                <p class="copyright">&copy; 2026 SwiftCheck. Empowering the next generation of IT professionals.</p>
-            </div>
-        </div>
-    </footer>
+   {% endblock %}
 
-    <script>
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-    </script>
-</body>
-</html>
+    
