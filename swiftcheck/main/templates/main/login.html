@@ -21,12 +21,15 @@
 			<div class="login-container-right">
 				<h1>Login</h1>
 				<p>Login to your account</p>
-				<form action="{% url 'login' %}" method="post">
+
+				<!-- Style the form to fit the page -->
+				 <form action="{% url 'login' %}" method="post">
 					{% csrf_token %}
-					<input type="text" placeholder="Username">
-					<input type="password" placeholder="Password">
-					<button type="submit">Login</button>
-				</form>
+					{{ form.username }}
+					{{ form.password }}
+
+					{{ form.submit }}
+				 </form>
 			</div>
 		</div>
 	</body>

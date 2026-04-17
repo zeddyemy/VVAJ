@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Course
+from utils.forms import LoginForm
 
 # Create your views here.
 def home(request):
@@ -13,7 +14,9 @@ def login(request):
         if user is not None:
             login(request, user)
             return redirect('home')
-    return render(request, 'main/login.html')
+    
+    form = LoginForm()
+    return render(request, 'main/login.html', {'form': form})
 
 def course(request):
     courses = Course.objects.all()

@@ -362,6 +362,16 @@ footer {
     max-width: 400px;
 }
 
+.my-input {
+    width: 100%;
+    background: red !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
 .login-container form input {
     width: 100%;
     background: var(--card-bg);
@@ -379,6 +389,7 @@ footer {
     background: rgba(250, 250, 250, 0.05);
 }
 
+.login-container form input[type="submit"],
 .login-container form button {
     background: var(--primary);
     color: white;
