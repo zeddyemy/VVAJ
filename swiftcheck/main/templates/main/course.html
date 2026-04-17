@@ -4,52 +4,59 @@
 {% block title %}Courses{% endblock %}
 
 {% block content %}
-    <section class="section-padding">
-      <div class="container">
-        <h1 class="Omo">Our <span>Expert</span> Courses</h1>
-        <p class="container p">
-          We offer a range of industry-relevant
-          <span> courses designed to equip learners with</span> practical skills
-          in modern web development , From
-          <span>frontend technologies to backend frameworks</span>, our programs
-          are structured to help you build real-world projects and
-          <span>become job-ready</span>.
-        </p>
-      </div>
-
-      <div class="Val">
-				<h1> OUR <span>FRONTEND</span> <span> DEVELOPMENT</span> COURSES</h1>
-				<p>Explore our comprehensive <span> frontend development courses designed </span> to take your skills to the next level.</p>
-			</div>
-<!--  -->
-      <div class="courses">
-        {% for course in frontend_courses %}
-        <div class="course-card">
-          <h1>{{ course.name }}</h1>
-          <p>{{ course.description }}</p>
-          <p>PRICE : {{ course.price }}</p>
-          <p>TUTOR : {{ course.teacher.username }}</p>
-
-          <a href="{% url 'course_detail' course.id %}" class="btn btn-outline">View Details</a>
+    <!-- Header -->
+    <header class="course-hero">
+        <div class="container">
+            <h1 class="animate">Our <span class="gradient-text">Expert</span> Courses</h1>
+            <p class="animate" style="animation-delay: 0.1s;">Industry-relevant programs designed to equip you with practical skills in modern IT and web development.</p>
         </div>
-        {% endfor %}
-      </div>
+    </header>
 
-      <div class="Val2">
-				<h1> OUR  <span> BACKEND DEVELOPMENT</span> COURSES</h1>
-				<p>Learn how to build powerful <span>server-side applications, manage databases, and create secure </span> , scalable systems that power modern web applications.</p>
-			</div>
-
-			<div class="courses2">
-	
-                {% for course in backend_courses %}
-                <div class="course-card2">
-                    <h1>{{ course.name }}</h1>
-                    <p>{{ course.description }}</p>
-                    <p> PRICE: {{ course.price }}</p>
-                    <p> TUTOR: {{ course.teacher.username }}</p>
+    <main class="container section-padding">
+        <!-- Frontend Development Section -->
+        <section>
+            <h2 class="category-title animate" style="animation-delay: 0.2s;">Frontend <span class="gradient-text">Development</span></h2>
+            <div class="course-grid">
+                {% for course in frontend_courses %}
+                <div class="card course-card animate" style="animation-delay: 0.3s;">
+                    <span class="badge">Frontend</span>
+                    <div class="course-card-content">
+                        <h3>{{ course.name }}</h3>
+                        <p>{{ course.description|truncatewords:20 }}</p>
+                    </div>
+                    <div class="course-card-meta">
+                        <span class="price">${{ course.price }}</span>
+                        <span class="tutor">By {{ course.teacher.username }}</span>
+                    </div>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-outline" style="margin-top: 1.5rem; text-align: center;">View Details</a>
                 </div>
+                {% empty %}
+                <p class="text-muted">No frontend courses available at the moment.</p>
                 {% endfor %}
-			</div>
-    </section>
+            </div>
+        </section>
+
+        <!-- Backend Development Section -->
+        <section>
+            <h2 class="category-title animate" style="animation-delay: 0.4s;">Backend <span class="gradient-text">Development</span></h2>
+            <div class="course-grid">
+                {% for course in backend_courses %}
+                <div class="card course-card animate" style="animation-delay: 0.5s;">
+                    <span class="badge">Backend</span>
+                    <div class="course-card-content">
+                        <h3>{{ course.name }}</h3>
+                        <p>{{ course.description|truncatewords:20 }}</p>
+                    </div>
+                    <div class="course-card-meta">
+                        <span class="price">${{ course.price }}</span>
+                        <span class="tutor">By {{ course.teacher.username }}</span>
+                    </div>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-outline" style="margin-top: 1.5rem; text-align: center;">View Details</a>
+                </div>
+                {% empty %}
+                <p class="text-muted">No backend courses available at the moment.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 {% endblock %}

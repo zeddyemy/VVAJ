@@ -453,19 +453,6 @@ footer {
     margin-bottom: 1.5rem;
 }
 
-.course-card2 {
-    height: 10vh;
-    width: 90%;
-    background: var(--card-bg);
-    padding: 1.25rem;
-    border-radius: var(--radius);
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .curriculum-item span {
     color: var(--text-muted);
 }
