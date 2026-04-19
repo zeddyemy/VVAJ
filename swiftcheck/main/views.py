@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from .models import Course
-from utils.forms import LoginForm
+from django.shortcuts import redirect, render
+from .models import Course, User, User
+from utils.forms import LoginForm, SignUpForm
 
 # Create your views here.
 def home(request):
@@ -17,6 +17,30 @@ def login(request):
     
     form = LoginForm()
     return render(request, 'main/login.html', {'form': form})
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            confirm_password = form.cleaned_data['confirm_password']
+
+            User.objects.create_user(
+                username=username,
+                email=email,
+                password=password,
+                confirm_password = confirm_password
+            )
+
+            return redirect('home')
+    else:
+        form = SignUpForm()
+
+    return render(request, 'main/signup.html', {'form': form})
+
 
 def course(request):
     courses = Course.objects.all()

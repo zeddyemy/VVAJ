@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>signup- SwiftCheck</title>
+
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+
+        <div>
+            <h1>Swift<span class="Amie">Check</span></h1>
+           
+        </div>
+		
+		<div class="signup-container">
+            
+			<div class="signup-container-left">
+
+				<div class="signup-img-container">
+					<img src="{% static 'img/vault.png' %}" alt="My image">
+				</div>
+			</div>
+
+			<div class="signup-container-right">
+				<h1>Create <span class="Amie">An</span> Account</h1>
+                <p>Create an account today for more information...</p>
+
+
+				<!-- Style the form to fit the page -->
+				 <form action="{% url 'login' %}" method="post">
+					{% csrf_token %}
+					{{ form.username }}
+					
+                    {{ form.email }}
+                    {{ form.password }}
+                    {{ form.confirm_password}}
+					{{ form.submit }}
+				 </form>
+			</div>
+		</div>
+	</body>
+</html>
