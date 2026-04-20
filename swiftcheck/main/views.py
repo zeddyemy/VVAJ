@@ -27,6 +27,21 @@ def signup(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             confirm_password = form.cleaned_data['confirm_password']
+            
+            if len(username) < 3:
+                form.add_error('username', 'Username must be at least 3 characters long.')
+                return render(request, 'main/signup.html', {'form': form})
+            
+            if email and User.objects.filter(email=email).exists():
+                form.add_error('email', 'Email is already in use.')
+                return render(request, 'main/signup.html', {'form': form})
+            
+            #TODO: Check if password is strong enough; (it must have number, caps, small letter, special character and be at least 8 characters long)
+            
+            if password != confirm_password:
+                form.add_error('confirm_password', 'Passwords do not match.')
+                
+                return render(request, 'main/signup.html', {'form': form})
 
             User.objects.create_user(
                 username=username,
