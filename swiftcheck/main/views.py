@@ -35,13 +35,37 @@ def signup(request):
             if email and User.objects.filter(email=email).exists():
                 form.add_error('email', 'Email is already in use.')
                 return render(request, 'main/signup.html', {'form': form})
-            
-            #TODO: Check if password is strong enough; (it must have number, caps, small letter, special character and be at least 8 characters long)
-            
+     
             if password != confirm_password:
                 form.add_error('confirm_password', 'Passwords do not match.')
                 
                 return render(request, 'main/signup.html', {'form': form})
+            
+            
+            
+             #TODO: Check if password is strong enough; (it must have number, caps, small letter, special character and be at least 8 characters long)
+            # ASSIGNMENT
+            if len(password) < 8:
+                form.add_error('password', 'Password must be at least 8 characters long.')
+                return render(request, 'main/signup.html', {'form': form})
+            
+            if not any(char.isdigit() for char in password):
+                form.add_error('password', 'Password must contain at least one number.')
+                return render(request, 'main/signup.html', {'form': form})
+
+            if not any(char.isupper() for char in password):
+                form.add_error('password', 'Password must contain at least one uppercase letter.')
+                return render(request, 'main/signup.html', {'form': form})
+
+            if not any(char.islower() for char in password):
+                form.add_error('password', 'Password must contain at least one lowercase letter.')
+                return render(request, 'main/signup.html', {'form': form})
+
+            if not any(char in '!@#$%^&*()-+' for char in password):
+                form.add_error('password', 'Password must contain at least one special character.')
+                return render(request, 'main/signup.html', {'form': form})
+            
+            
 
             User.objects.create_user(
                 username=username,
