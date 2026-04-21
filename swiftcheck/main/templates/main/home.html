@@ -27,6 +27,10 @@
 	</div>
 </header>
 
+{% if request.user.is_authenticated %}
+	<p>Welcome {{ request.user.username }}</p>
+{% endif %}
+
 <!-- Course Categories -->
 <section class="section-padding">
 	<div class="container">

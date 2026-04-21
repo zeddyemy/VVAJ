@@ -38,7 +38,15 @@
 					{% endfor %}
 					
                     {{ form.email }}
+
+					
+
 					{{ form.password }}
+					{% for error in form.password.errors %}
+						<div class="error">{{ error }}</div>
+					{% endfor %}
+
+					
                     
 					{{ form.confirm_password}}
 					{% for error in form.confirm_password.errors %}

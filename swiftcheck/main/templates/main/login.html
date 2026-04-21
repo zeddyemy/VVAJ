@@ -26,6 +26,11 @@
 				<p>Login to your account</p>
 
 				<!-- Style the form to fit the page -->
+				{% if messages %}
+					{% for message in messages %}
+						<p>{{ message }}</p>
+					{% endfor %}
+				{% endif %}
 				 <form action="{% url 'login' %}" method="post">
 					{% csrf_token %}
 					{{ form.username }}
