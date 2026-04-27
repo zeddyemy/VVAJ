@@ -121,3 +121,5 @@ STATIC_URL = 'assets/'
 STATICFILES_DIRS = [
     BASE_DIR / "public",
 ]
+
+LOGIN_URL = '/login'

@@ -82,12 +82,9 @@ def signup(request):
             
             
 
-            User.objects.create_user(
-                username=username,
-                email=email,
-                password=password,
-                confirm_password = confirm_password
-            )
+            new_user = User(username=username, email=email, password=password)
+            
+            
 
             return redirect('home')
     else:
