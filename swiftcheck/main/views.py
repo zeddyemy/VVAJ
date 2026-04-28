@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
-from .models import Course, User, User
+from .models import Course
+from django.contrib.auth.models import User
 from utils.forms import LoginForm, SignUpForm
-from django.contrib.auth import authenticate, login as login_user
+from django.contrib.auth import authenticate, login as login_user, logout
 from django.contrib.auth.decorators import login_required
+import random
 
 # Create your views here.
 @login_required
@@ -13,10 +15,15 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        remember_me = request.POST.get("remember_me")
+        
+        # generate random code
+        six_otp_code = ''.join([str(random.randint(0, 9))  for i in range(6)])
         
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login_user(request, user)
+            request.session.set_expiry(300)  # 300 seconds = 5 minutes
             return redirect('home')
         
         if not user:
@@ -63,7 +70,6 @@ def signup(request):
                 return render(request, 'main/signup.html', {'form': form})
             
             
-                
             if not any(char.isdigit() for char in password):
                 form.add_error('password', 'Password must contain at least one number.')
                 return render(request, 'main/signup.html', {'form': form})
@@ -80,11 +86,13 @@ def signup(request):
                 form.add_error('password', 'Password must contain at least one special character.')
                 return render(request, 'main/signup.html', {'form': form})
             
-            
-
-            new_user = User(username=username, email=email, password=password)
-            
-            
+        
+            new_user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password
+            )
+            new_user.save()
 
             return redirect('home')
     else:

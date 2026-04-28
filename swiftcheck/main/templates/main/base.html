@@ -27,17 +27,25 @@
 					<li><a href="{% url 'courses' %}">Courses</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Resources</a></li>
-					<li>
-						<a href="{% url 'login' %}" class="btn btn-outline"
-							>Sign In</a
-						>
-					</li>
 
-					<li>
-						<a href="{% url 'signup' %}" class="btn btn-outline"
-							>Sign Up</a
-						>
-					</li>
+					{% if request.user.is_authenticated %}
+						<li>
+							<a href="{% url 'logout' %}" class="btn btn-outline"
+								>Log Out</a
+							>
+						</li>
+					{% else %}
+						<li>
+							<a href="{% url 'login' %}" class="btn btn-outline"
+								>Sign In</a
+							>
+						</li>
+						<li>
+							<a href="{% url 'signup' %}" class="btn btn-outline"
+								>Sign Up</a
+							>
+						</li>
+					{% endif %}
 				</ul>
 
 				
