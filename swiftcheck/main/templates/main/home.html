@@ -18,6 +18,11 @@
 			courses. Stay ahead of the curve with real-time updates on latest
 			curriculum.
 		</p>
+
+		
+
+
+		 
 		<div class="hero-btns animate" style="animation-delay: 0.2s">
 			<a href="{% url 'courses' %}" class="btn btn-primary"
 				>Browse Courses</a
@@ -27,9 +32,12 @@
 	</div>
 </header>
 
-{% if request.user.is_authenticated %}
-	<p>Welcome {{ request.user.username }}</p>
-{% endif %}
+  {% if request.user.is_authenticated %}
+	<p class="welcome"><span class="Amie">Welcome </span>{{ request.user.username }}</p>
+     {% endif %}
+
+
+
 
 <!-- Course Categories -->
 <section class="section-padding">
