@@ -133,6 +133,9 @@ def api_courses(request):
             "id": course.id,
             "name": course.name,
             "price": course.price,
+            "category": course.category,
+            # "level": course.level,
+            # "duration": course.duration,
         }
         for course in courses
     ]
