@@ -5,6 +5,7 @@ from utils.forms import LoginForm, SignUpForm
 from django.contrib.auth import authenticate, login as login_user, logout
 from django.contrib.auth.decorators import login_required
 import random
+from django.http import JsonResponse
 
 # Create your views here.
 @login_required
@@ -121,3 +122,19 @@ def course_detail(request, id):
         'course': course,
     }
     return render(request, 'main/course_detail.html', context)
+
+
+
+def api_courses(request):
+    courses = Course.objects.all()
+
+    data = [
+        {
+            "id": course.id,
+            "name": course.name,
+            "price": course.price,
+        }
+        for course in courses
+    ]
+
+    return JsonResponse(data, safe=False)
