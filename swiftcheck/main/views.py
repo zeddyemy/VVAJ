@@ -141,3 +141,19 @@ def api_courses(request):
     ]
 
     return JsonResponse(data, safe=False)
+
+def api_course_detail(request, id):
+    course = Course.objects.get(id=id)
+    
+    data = {
+        "id": course.id,
+        "name": course.name,
+        "price": course.price,
+        "category": course.category,
+        "description": course.description,
+        "teacher": course.teacher.username,
+        # "level": course.level,
+        # "duration": course.duration,
+    }
+    
+    return JsonResponse(data, safe=False)
